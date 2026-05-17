@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 df = pd.read_csv("train_and_test2.csv")
 
 # Use ONLY useful columns
-X = df[["Age", "Fare", "Sex", "Pclass"]]
+X = df[[ "Fare", "Sex", "Pclass"]]
 y = df["2urvived"]
 
 # Split data
@@ -26,13 +26,15 @@ predictions = model.predict(X_test)
 # Accuracy
 accuracy = accuracy_score(y_test, predictions)
 print("Model Accuracy:", accuracy * 100, "%")
-
+train_predictions = model.predict(X_train)
+train_accuracy = accuracy_score(y_train, train_predictions)
+print("Training Accuracy:", train_accuracy * 100)
 import numpy as np
 
 # New passenger details
 # Age, Fare, Sex (1=female, 0=male), Pclass
 new_passenger = pd.DataFrame({
-    "Age": [8], "Fare": [7.0], 
+     "Fare": [7.0], 
 "Sex": [1], "Pclass": [3]
 })
 
