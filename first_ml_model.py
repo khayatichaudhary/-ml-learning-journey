@@ -45,3 +45,8 @@ if result[0] == 1:
     print("This passenger SURVIVES! ✅")
 else:
     print("This passenger DIES! ☠️")
+from sklearn.model_selection import cross_val_score
+# Cross Validation
+scores = cross_val_score(model, X, y, cv=5)
+print("All 5 scores:", scores)
+print("Average accuracy:", scores.mean() * 100)
